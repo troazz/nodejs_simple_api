@@ -27,8 +27,8 @@ Add new category
 
 + Body Params
     + name (string)
-    + [description] (string)
-    + [parent] (int)
+    + [ description ] (string)
+    + [ parent ] (int)
 
 + Success Response 200 (application/json)
 + Error Response 400 (application/json)
@@ -41,8 +41,8 @@ Update category data
 
 + Body Params
     + name (string)
-    + [description] (string)
-    + [parent] (int)
+    + [ description ] (string)
+    + [ parent ] (int)
 
 + Success Response 200 (application/json)
 + Error Response 400 (application/json)
@@ -57,7 +57,67 @@ Delete category
 + Error Response 400 (application/json)
 
 #### Category Detail [GET /category/{id}]
-Get detail data of specified category with id
+Get detail data of specified category by id
+
++ Parameters
+    + id (int)
+
++ Success Response 200 (application/json)
++ Error Response 400 (application/json)
+
+## Product
+
+#### List Product [GET /product]
+Get specified length of products, you can pass query string `limit` to set length of data. Default value for `limit` is 10.
+
++ Query String Params
+    + [ limit ] (int)
+    + [ page ] (int)
+
++ Response 200 (application/json)
+
+#### Add New Product [POST /product]
+Add new product
+
++ Body Params
+    + name (string)
+    + [ description ] (string)
+    + category_id (int)
+    + stock (int)
+    + price (double)
+    + cost (double)
+
++ Success Response 200 (application/json)
++ Error Response 400 (application/json)
+
+#### Update Product [PUT /product/{id}]
+Update product data
+
++ Parameters
+    + id (int)
+
++ Body Params
+    + name (string)
+    + [ description ] (string)
+    + category_id (int)
+    + stock (int)
+    + price (double)
+    + cost (double)
+
++ Success Response 200 (application/json)
++ Error Response 400 (application/json)
+
+#### Delete Product [DELETE /product/{id}]
+Delete product
+
++ Parameters
+    + id (int)
+
++ Success Response 200 (application/json)
++ Error Response 400 (application/json)
+
+#### Product Detail [GET /product/{id}]
+Get detail data of specified product by id
 
 + Parameters
     + id (int)
