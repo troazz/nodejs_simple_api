@@ -6,8 +6,9 @@ Example of NodeJS CRUD (Create Read Update Delete) API with MySQL database, it h
 2. Create new database on your MySQL Server.
 3. Import `database.sql`
 4. Install node module by run ``npm install`` on your console.
-5. Execute ``node myapp.js`` to run this app.
-6. When this app is running you can try to use this API.
+5. Edit database configuration in file `./config/config.json`
+6. Execute ``node myapp.js`` to run this app.
+7. When this app is running you can try to use this API.
 
 ## Run API Test
 1. Execute ``node myapp.js`` to run this app.
@@ -27,8 +28,8 @@ Add new category
 
 + Body Params
     + name (string)
-    + [ description ] (string)
-    + [ parent ] (int)
+    + description (string) _optional_
+    + parent (int) _optional_
 
 + Success Response 200 (application/json)
 + Error Response 400 (application/json)
@@ -41,8 +42,8 @@ Update category data
 
 + Body Params
     + name (string)
-    + [ description ] (string)
-    + [ parent ] (int)
+    + description (string) _optional_
+    + parent (int) _optional_
 
 + Success Response 200 (application/json)
 + Error Response 400 (application/json)
@@ -68,11 +69,11 @@ Get detail data of specified category by id
 ## Product
 
 #### List Product [GET /product]
-Get specified length of products, you can pass query string `limit` to set length of data. Default value for `limit` is 10.
+Get list data of products, you can pass query string `limit` to set length of data. Default value for `limit` is 10.
 
 + Query String Params
-    + [ limit ] (int)
-    + [ page ] (int)
+    + limit (int) _optional_
+    + page (int) _optional_
 
 + Response 200 (application/json)
 
@@ -81,7 +82,7 @@ Add new product
 
 + Body Params
     + name (string)
-    + [ description ] (string)
+    + description (string) _optional_
     + category_id (int)
     + stock (int)
     + price (double)
@@ -98,7 +99,7 @@ Update product data
 
 + Body Params
     + name (string)
-    + [ description ] (string)
+    + description (string) _optional_
     + category_id (int)
     + stock (int)
     + price (double)

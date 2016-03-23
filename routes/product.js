@@ -16,8 +16,8 @@ exports.list = function (req, res){
     req.sanitizeQuery('limit').toInt();
     req.sanitizeQuery('page').toInt();
 
-    var limit = (req.query.limit != undefined) ? req.query.limit : 10;
-    var page  = (req.query.page != undefined && req.query.page > 0) ? req.query.page : 1;
+    var limit = (req.query.limit !== undefined) ? req.query.limit : 10;
+    var page  = (req.query.page !== undefined && req.query.page > 0) ? req.query.page : 1;
     var offset = ((page - 1) * limit);
     models.product.findAll({
         offset: offset,
@@ -26,11 +26,11 @@ exports.list = function (req, res){
     }).then(function(rows) {
         res.json({status: "ok", data: rows});
     });
-}
+};
 
 exports.add = function (req, res){
     models.category.check(req.body.category_id, function(rows){
-        if (rows != null){
+        if (rows !== null){
             var data = {
                 name        : req.body.name,
                 description : req.body.description,
@@ -38,7 +38,7 @@ exports.add = function (req, res){
                 stock       : req.body.stock,
                 cost        : req.body.cost,
                 price       : req.body.price,
-            }
+            };
             models.product.create(data).then(function(rows){
                 res.json({status: "ok", inserted_id: rows.id});
             }).catch(function(err){
@@ -51,8 +51,8 @@ exports.add = function (req, res){
         }else{
             res.status(400).json({status: "error", error: {param: "parent", msg: "category ID is not found."}});
         }
-    })
-}
+    });
+};
 
 exports.edit = function (req, res){
     // start validation
@@ -64,7 +64,7 @@ exports.edit = function (req, res){
         res.status(400).json({status: "error", error: errors});
     }else{
         models.category.check(req.body.category_id, function(rows){
-            if (rows != null){
+            if (rows !== null){
                 var data = {
                     name        : req.body.name,
                     description : req.body.description,
@@ -72,7 +72,7 @@ exports.edit = function (req, res){
                     stock       : req.body.stock,
                     cost        : req.body.cost,
                     price       : req.body.price,
-                }
+                };
                 models.product.update(data, {
                     where:{
                         id:req.params.id
@@ -92,9 +92,9 @@ exports.edit = function (req, res){
             }else{
                 res.status(400).json({status: "error", error: {param: "parent", msg: "category ID is not found."}});
             }
-        })
+        });
     }
-}
+};
 
 exports.detail = function (req, res){
     // validation
@@ -111,14 +111,14 @@ exports.detail = function (req, res){
             },
             include: [ models.category ]
         }).then(function(row){
-            if (row != null){
+            if (row !== null){
                 res.json({status: "ok", data: row});
             }else{
                 res.status(400).json({status: "error", error: {param: "id", msg: "product with ID ("+req.params.id+") not found"}});
             }
         });
     }
-}
+};
 
 exports.delete = function (req, res){
     // validation
@@ -142,4 +142,4 @@ exports.delete = function (req, res){
                 res.status(400).json({status:"error", message: "product ID not found"});
         });
     }
-}
+};
