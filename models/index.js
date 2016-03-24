@@ -8,6 +8,7 @@ var config    = require(path.join(__dirname, '..', 'config', 'config.json'))[env
 var sequelize = new Sequelize(config.database, config.username, config.password, {
     host: config.host,
     dialect: config.dialect,
+    logging: false,
     pool: {
         max: 5,
         min: 0,

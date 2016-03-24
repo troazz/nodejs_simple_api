@@ -1,24 +1,22 @@
-var express          = require('express'),
-    path             = require('path'),
-    bodyParser       = require('body-parser'),
-    app              = express(),
+var express = require('express'),
+    path = require('path'),
+    bodyParser = require('body-parser'),
+    app = express(),
     expressValidator = require('express-validator'),
-    // routes & helper
-    product          = require('./routes/product'),
-    category         = require('./routes/category');
-
-// view engine
-// app.set('views', path.join(__dirname, 'views'));
-// app.set('view engine', 'jade');
+    // routes
+    product = require('./routes/product'),
+    category = require('./routes/category');
 
 app.set('port', 3000);
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(bodyParser.urlencoded({ extended:false })); //support x-www-form-urlencoded
+app.use(bodyParser.urlencoded({
+    extended: false
+})); //support x-www-form-urlencoded
 app.use(bodyParser.json());
 app.use(expressValidator());
 
 // Add headers
-app.use(function (req, res, next) {
+app.use(function(req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
@@ -59,6 +57,6 @@ app.use(function(err, req, res, next) {
     });
 });
 
-app.listen(app.get('port'), function(){
+app.listen(app.get('port'), function() {
     console.log('Express server listening on port ' + app.get('port'));
 });

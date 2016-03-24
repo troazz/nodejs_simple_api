@@ -19,7 +19,7 @@ Example of NodeJS CRUD (Create Read Update Delete) API with MySQL database, it h
 ## Category
 
 #### List All Category [GET /category]
-List all category with it's child.
+List all category with hierarchical tree data.
 
 + Response 200 (application/json)
 
@@ -58,7 +58,7 @@ Delete category
 + Error Response 400 (application/json)
 
 #### Category Detail [GET /category/{id}]
-Get detail data of specified category by id
+Get detail data of specified category by id with hierarchical tree data.
 
 + Parameters
     + id (int)
