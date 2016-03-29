@@ -28,8 +28,8 @@ Add new category
 
 + Body Params
     + name (string)
-    + [description] (string) _optional_
-    + [parent] (int) _optional_
+    + description (string) _optional_
+    + parent (int) _optional_
 
 + Success Response 200 (application/json)
 + Error Response 400 (application/json)
@@ -42,8 +42,8 @@ Update category data
 
 + Body Params
     + name (string)
-    + [description] (string) _optional_
-    + [parent] (int) _optional_
+    + description (string) _optional_
+    + parent (int) _optional_
 
 + Success Response 200 (application/json)
 + Error Response 400 (application/json)
@@ -72,8 +72,8 @@ Get detail data of specified category by id with hierarchical tree data.
 Get list data of products, you can pass query string `limit` to set length of data. Default value for `limit` is 10.
 
 + Query String Params
-    + [limit] (int) _optional_
-    + [page] (int) _optional_
+    + limit (int) _optional_
+    + page (int) _optional_
 
 + Response 200 (application/json)
 
@@ -82,7 +82,7 @@ Add new product
 
 + Body Params
     + name (string)
-    + [description] (string) _optional_
+    + description (string) _optional_
     + category_id (int)
     + stock (int)
     + price (double)
@@ -99,7 +99,7 @@ Update product data
 
 + Body Params
     + name (string)
-    + [description] (string) _optional_
+    + description (string) _optional_
     + category_id (int)
     + stock (int)
     + price (double)
