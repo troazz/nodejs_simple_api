@@ -199,7 +199,10 @@ exports.detail = function(req, res) {
                             r.child.push(b);
                         }
                         if (max == cur)
-                            res.json(row);
+                            res.json({
+                                status: "ok",
+                                data: row
+                            });
                     });
                 };
 
